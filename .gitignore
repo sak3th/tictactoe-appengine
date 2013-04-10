@@ -1,9 +1,5 @@
 *.class
 
-# Package Files #
-*.jar
-*.war
-
 # gwt caches and compiled units #
 war/tictactoe-appengine/
 gwt-unitCache/
@@ -21,5 +17,5 @@ war/WEB-INF/classes/
 war/WEB-INF/appengine-generated/
 
 # Eclipse project files
-.classpath
-.project
+#.classpath
+#.project
