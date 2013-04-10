@@ -2,22 +2,18 @@ package tictactoe.model;
 
 import com.google.gson.Gson;
 
-public class Response {
+public class Response<T> {
     
     public enum Status { OK, WARNING, ERROR }
     
     public Status status;
     public String msg;
-    public Object obj;
+    public T obj;
     
-    private Response(Status status, String msg, Object obj) {
+    public Response(Status status, String msg, T obj) {
         this.status = status;
         this.msg = msg;
         this.obj = obj;
-    }
-    
-    public static Response create(Status status, String msg, Object obj) {
-        return new Response(status, msg, obj);
     }
 
     @Override

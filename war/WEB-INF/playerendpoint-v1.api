@@ -40,7 +40,7 @@
       }
     },
     "playerendpoint.remove" : {
-      "path" : "remove/{id}",
+      "path" : "remove/{email}",
       "httpMethod" : "DELETE",
       "scopes" : [ ],
       "audiences" : [ ],
@@ -48,7 +48,7 @@
       "rosyMethod" : "PlayerEndpoint.remove",
       "request" : {
         "parameters" : {
-          "id" : {
+          "email" : {
             "type" : "string",
             "required" : true
           }
@@ -129,6 +129,9 @@
             "type" : "string"
           },
           "userId" : {
+            "type" : "string"
+          },
+          "gcmRegId" : {
             "type" : "string"
           }
         }

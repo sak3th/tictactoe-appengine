@@ -35,7 +35,6 @@ public class ReceptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         log.info("New request - " + req.getRequestURI());
         
         UserService userService = UserServiceFactory.getUserService();
@@ -73,12 +72,12 @@ public class ReceptionServlet extends HttpServlet {
             // TODO find a neater way to form the URI
             resp.setContentType("application/json");
             if(SystemProperty.environment.value() == SystemProperty.Environment.Value.Production) {
-                resp.getWriter().print(Response.create(Response.Status.OK, 
+                resp.getWriter().print(new Response<Player>(Response.Status.OK, 
                                         userService.createLogoutURL(PRODUCTION_LOGOUT_URI
                                                                          + user.getEmail()),
                                         PlayerEndpoint.get(user.getEmail())));
             } else {
-                resp.getWriter().print(Response.create(Response.Status.OK, 
+                resp.getWriter().print(new Response<Player>(Response.Status.OK, 
                                         userService.createLogoutURL(DEVELOPMENT_LOGOUT_URI
                                                                          + user.getEmail()),
                                         PlayerEndpoint.get(user.getEmail())));               
@@ -92,7 +91,7 @@ public class ReceptionServlet extends HttpServlet {
                 String email = splits[splits.length-1];
                 // TODO remove the user from the online users list
             } else {
-                resp.getWriter().print(Response.create(Response.Status.OK,
+                resp.getWriter().print(new Response<Player>(Response.Status.OK,
                                         userService.createLoginURL(req.getRequestURI()), null));
             }
         }

@@ -117,7 +117,7 @@ public class PlayerEndpoint {
 			if (!contains(player)) {
 				throw new EntityNotFoundException("Object does not exist");
 			}
-			mgr.persist(player);
+			mgr.merge(player);
 		} finally {
 			mgr.close();
 		}
@@ -125,17 +125,17 @@ public class PlayerEndpoint {
 	}
 
 	/**
-	 * This method removes the entity with primary key id.
+	 * This method removes the entity with primary key email.
 	 * It uses HTTP DELETE method.
 	 *
-	 * @param id the primary key of the entity to be deleted.
+	 * @param email the primary key of the entity to be deleted.
 	 * @return The deleted entity.
 	 */
-	public static Player remove(@Named("id") String id) {
+	public static Player remove(@Named("email") String email) {
 		EntityManager mgr = getEntityManager();
 		Player player = null;
 		try {
-			player = mgr.find(Player.class, id);
+			player = mgr.find(Player.class, email);
 			mgr.remove(player);
 		} finally {
 			mgr.close();
