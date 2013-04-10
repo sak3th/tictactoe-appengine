@@ -19,3 +19,7 @@ war/WEB-INF/appengine-generated/
 # Eclipse project files
 #.classpath
 #.project
+
+# OS X system files
+.DS_Store
+.localized
